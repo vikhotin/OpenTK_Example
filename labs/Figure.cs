@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Windows.Media.Media3D;
+using OpenTK;
 
 namespace labs
 {
 	public abstract class Figure
 	{
-		public Point3D[] Vertices
+		public Vector3[] Vertices
 		{
 			get;
 			protected set;
@@ -20,17 +20,17 @@ namespace labs
 
 	class Cube : Figure
 	{
-		public Cube(double width)
+		public Cube(float width)
 		{
-			Vertices = new Point3D[8];
-			Vertices[0] = new Point3D(0, 0, 0);
-			Vertices[1] = new Point3D(0, width, 0);
-			Vertices[2] = new Point3D(width, width, 0);
-			Vertices[3] = new Point3D(width, 0, 0);
-			Vertices[4] = new Point3D(0, 0, width);
-			Vertices[5] = new Point3D(0, width, width);
-			Vertices[6] = new Point3D(width, width, width);
-			Vertices[7] = new Point3D(width, 0, width);
+			Vertices = new Vector3[8];
+			Vertices[0] = new Vector3(0, 0, 0);
+			Vertices[1] = new Vector3(0, width, 0);
+			Vertices[2] = new Vector3(width, width, 0);
+			Vertices[3] = new Vector3(width, 0, 0);
+			Vertices[4] = new Vector3(0, 0, width);
+			Vertices[5] = new Vector3(0, width, width);
+			Vertices[6] = new Vector3(width, width, width);
+			Vertices[7] = new Vector3(width, 0, width);
 
 			Faces = new int[6][];
 			Faces[0] = new int[4] { 0, 1, 2, 3 };
@@ -44,13 +44,13 @@ namespace labs
 
 	class Pyramid : Figure
 	{
-		public Pyramid(double width)
+		public Pyramid(float width)
 		{
-			Vertices = new Point3D[4];
-			Vertices[0] = new Point3D(width / 2, -width / 2 / Math.Sqrt(3), -width * Math.Sqrt(6)/9);
-			Vertices[1] = new Point3D(-width / 2, -width / 2 / Math.Sqrt(3), -width * Math.Sqrt(6) / 9);
-			Vertices[2] = new Point3D(0, width / Math.Sqrt(3), -width * Math.Sqrt(6) / 9);
-			Vertices[3] = new Point3D(0, 0, (3 * width * Math.Sqrt(3) - width * Math.Sqrt(6))/9);
+			Vertices = new Vector3[4];
+			Vertices[0] = new Vector3(width / 2, Convert.ToSingle(-width / 2 / Math.Sqrt(3)), Convert.ToSingle(-width * Math.Sqrt(6)/9));
+			Vertices[1] = new Vector3(-width / 2, Convert.ToSingle(-width / 2 / Math.Sqrt(3)), Convert.ToSingle(-width * Math.Sqrt(6) / 9));
+			Vertices[2] = new Vector3(0, Convert.ToSingle(width / Math.Sqrt(3)), Convert.ToSingle(-width * Math.Sqrt(6) / 9));
+			Vertices[3] = new Vector3(0, 0, Convert.ToSingle((3 * width * Math.Sqrt(3) - width * Math.Sqrt(6))/9));
 
 			Faces = new int[4][];
 			Faces[0] = new int[3] { 0, 1, 2 };
