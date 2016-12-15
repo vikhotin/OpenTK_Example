@@ -1,5 +1,4 @@
-﻿using System;
-namespace labs
+﻿namespace labs
 {
 	public class Scene
 	{

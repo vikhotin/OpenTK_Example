@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Media.Media3D;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -13,7 +12,7 @@ namespace labs
 
         public Program() : base(800, 600, new GraphicsMode(16, 16))
         {
-			Camera cam = new Camera(new Point3D(50, 50, 50), new Point3D(0, 0, 0));
+			Camera cam = new Camera(new Vector3(50, 50, 50), new Vector3(0, 0, 0));
 			Cube cube = new Cube(20);
 			//Pyramid cube = new Pyramid(20);
 			Scene scene = new Scene(cam, new Figure[1] { cube });

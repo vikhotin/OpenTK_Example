@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Media.Media3D;
+﻿using OpenTK;
 
 namespace labs
 {
@@ -12,60 +11,60 @@ namespace labs
 
 	public sealed class Camera
 	{
-		public Point3D Pos
-		{
-			get;
-			set;
-		}
-		
-		public Point3D Trg //Target
+		public Vector3 Pos
 		{
 			get;
 			set;
 		}
 
-		public Camera(Point3D pos, Point3D trg)
+		public Vector3 Trg //Target
+		{
+			get;
+			set;
+		}
+
+		public Camera(Vector3 pos, Vector3 trg)
 		{
 			Pos = pos;
 			Trg = trg;
 		}
 
-		public void Move(ShiftDirection dir, double shift)
+		public void Move(ShiftDirection dir, float shift)
 		{
 			switch (dir)
 			{
 				case ShiftDirection.XAxis:
-					Pos = new Point3D(Pos.X + shift, Pos.Y, Pos.Z);
-					Trg = new Point3D(Trg.X + shift, Trg.Y, Trg.Z);
+					Pos = new Vector3(Pos.X + shift, Pos.Y, Pos.Z);
+					Trg = new Vector3(Trg.X + shift, Trg.Y, Trg.Z);
 					break;
 				case ShiftDirection.YAxis:
-					Pos = new Point3D(Pos.X, Pos.Y + shift, Pos.Z);
-					Trg = new Point3D(Trg.X, Trg.Y + shift, Trg.Z);
+					Pos = new Vector3(Pos.X, Pos.Y + shift, Pos.Z);
+					Trg = new Vector3(Trg.X, Trg.Y + shift, Trg.Z);
 					break;
 				case ShiftDirection.ZAxis:
-					Pos = new Point3D(Pos.X, Pos.Y, Pos.Z + shift);
-					Trg = new Point3D(Trg.X, Trg.Y, Trg.Z + shift);
-					break;					
+					Pos = new Vector3(Pos.X, Pos.Y, Pos.Z + shift);
+					Trg = new Vector3(Trg.X, Trg.Y, Trg.Z + shift);
+					break;
 				default:
 					break;
 			}
 		}
 		/*
-		public void Rotate(ShiftDirection dir, double shift)
+		public void Rotate(ShiftDirection dir, float shift)
 		{
 			switch (dir)
 			{
 				case ShiftDirection.XAxis:
-					Pos = new Point3D(Pos.X + shift, Pos.Y, Pos.Z);
-					//Trg = new Point3D(Trg.X + shift, Trg.Y, Trg.Z);
+					Pos = new Vector3(Pos.X + shift, Pos.Y, Pos.Z);
+					//Trg = new Vector3(Trg.X + shift, Trg.Y, Trg.Z);
 					break;
 				case ShiftDirection.YAxis:
-					Pos = new Point3D(Pos.X, Pos.Y + shift, Pos.Z);
-					//Trg = new Point3D(Trg.X, Trg.Y + shift, Trg.Z);
+					Pos = new Vector3(Pos.X, Pos.Y + shift, Pos.Z);
+					//Trg = new Vector3(Trg.X, Trg.Y + shift, Trg.Z);
 					break;
 				case ShiftDirection.ZAxis:
-					Pos = new Point3D(Pos.X, Pos.Y, Pos.Z + shift);
-					//Trg = new Point3D(Trg.X, Trg.Y, Trg.Z + shift);
+					Pos = new Vector3(Pos.X, Pos.Y, Pos.Z + shift);
+					//Trg = new Vector3(Trg.X, Trg.Y, Trg.Z + shift);
 					break;
 				default:
 					break;
