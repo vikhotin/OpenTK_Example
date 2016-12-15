@@ -51,7 +51,7 @@ namespace labs
 			}
 		}
 		/*
-		public void Rotate(ShiftDirection dir, double shift)
+		public void Rotate(ShiftDirection dir, float shift)
 		{
 			switch (dir)
 			{

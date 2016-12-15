@@ -46,11 +46,14 @@ namespace labs
 	{
 		public Pyramid(float width)
 		{
+			float r3 = Convert.ToSingle(Math.Sqrt(3));
+			float r6 = Convert.ToSingle(Math.Sqrt(6));
+
 			Vertices = new Vector3[4];
-			Vertices[0] = new Vector3(width / 2, Convert.ToSingle(-width / 2 / Math.Sqrt(3)), Convert.ToSingle(-width * Math.Sqrt(6)/9));
-			Vertices[1] = new Vector3(-width / 2, Convert.ToSingle(-width / 2 / Math.Sqrt(3)), Convert.ToSingle(-width * Math.Sqrt(6) / 9));
-			Vertices[2] = new Vector3(0, Convert.ToSingle(width / Math.Sqrt(3)), Convert.ToSingle(-width * Math.Sqrt(6) / 9));
-			Vertices[3] = new Vector3(0, 0, Convert.ToSingle((3 * width * Math.Sqrt(3) - width * Math.Sqrt(6))/9));
+			Vertices[0] = new Vector3(width / 2, -width / 2 / r3, -width * r6/9);
+			Vertices[1] = new Vector3(-width / 2, -width / 2 / r3, -width * r6 / 9);
+			Vertices[2] = new Vector3(0, width / r3, -width * r6 / 9);
+			Vertices[3] = new Vector3(0, 0, (3 * width * r3 - width * r6)/9);
 
 			Faces = new int[4][];
 			Faces[0] = new int[3] { 0, 1, 2 };
