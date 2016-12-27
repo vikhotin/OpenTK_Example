@@ -63,6 +63,7 @@
     <Compile Include="Renderer.cs" />
     <Compile Include="tests\test_figure.cs" />
     <Compile Include="tests\test_camera.cs" />
+    <Compile Include="test_scene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

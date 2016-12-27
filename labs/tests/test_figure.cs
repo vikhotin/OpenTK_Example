@@ -30,7 +30,7 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestPyramideException ()
+		public void TestPyramidException ()
 		{
 			Assert.Catch(Type.GetType("labs.FigureZeroSizeException"),()=>{Pyramid _pyr = new Pyramid (0);});
 		}

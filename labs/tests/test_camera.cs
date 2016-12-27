@@ -44,6 +44,36 @@ namespace labs
 			Assert.AreEqual (new Vector3(0,0,10),_cam.Pos);
 			Assert.AreEqual (new Vector3 (1,1,11), _cam.Trg);
 		}
+
+		[Test ()]
+		public void TestMove_X ()
+		{
+			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
+			ShiftDirection dir = ShiftDirection.XAxis;
+			_cam.Move (dir, -10);
+			Assert.AreEqual (new Vector3(-10,0,0),_cam.Pos);
+			Assert.AreEqual (new Vector3 (-9,1,1), _cam.Trg);
+		}
+
+		[Test ()]
+		public void TestMove_Y ()
+		{
+			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
+			ShiftDirection dir = ShiftDirection.YAxis;
+			_cam.Move (dir, -10);
+			Assert.AreEqual (new Vector3(0,-10,0),_cam.Pos);
+			Assert.AreEqual (new Vector3 (1,-9,1), _cam.Trg);
+		}
+
+		[Test ()]
+		public void TestMove_Z ()
+		{
+			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
+			ShiftDirection dir = ShiftDirection.ZAxis;
+			_cam.Move (dir, -10);
+			Assert.AreEqual (new Vector3(0,0,-10),_cam.Pos);
+			Assert.AreEqual (new Vector3 (1,1,-9), _cam.Trg);
+		}
 	}
 }
 
