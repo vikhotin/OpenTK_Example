@@ -38,7 +38,3 @@ Thumbs.db
 
 # dotCover
 *.dotCover
-
-# cross-platform try
-*.csproj
-*.config
