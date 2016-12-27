@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
+=======
+﻿using System;
+using OpenTK;
+>>>>>>> refs/remotes/origin/alex
 
 namespace labs
 {
@@ -17,7 +22,7 @@ namespace labs
 			get;
 			set;
 		}
-
+		
 		public Vector3 Trg //Target
 		{
 			get;
@@ -45,7 +50,7 @@ namespace labs
 				case ShiftDirection.ZAxis:
 					Pos = new Vector3(Pos.X, Pos.Y, Pos.Z + shift);
 					Trg = new Vector3(Trg.X, Trg.Y, Trg.Z + shift);
-					break;
+					break;					
 				default:
 					break;
 			}
