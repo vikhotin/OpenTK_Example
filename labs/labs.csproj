@@ -8,6 +8,8 @@
     <RootNamespace>labs</RootNamespace>
     <AssemblyName>labs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +35,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+      <Package>nunit</Package>
     </Reference>
     <Reference Include="OpenTK">
       <HintPath>..\packages\OpenTK.2.0.0\lib\net20\OpenTK.dll</HintPath>
@@ -49,6 +52,7 @@
     <Compile Include="tests\test_figure.cs" />
     <Compile Include="tests\test_camera.cs" />
     <Compile Include="tests\test_scene.cs" />
+    <Compile Include="tests\test_render.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
