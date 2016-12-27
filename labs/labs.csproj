@@ -49,6 +49,7 @@
     <Compile Include="tests\test_figure.cs" />
     <Compile Include="tests\test_camera.cs" />
     <Compile Include="tests\test_scene.cs" />
+    <Compile Include="tests\test_render.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
