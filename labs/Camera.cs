@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-﻿using OpenTK;
-using OpenTK.Graphics.OpenGL;
-=======
 ﻿using System;
 using OpenTK;
->>>>>>> refs/remotes/origin/alex
 
 namespace labs
 {
