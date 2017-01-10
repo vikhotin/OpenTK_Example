@@ -24,13 +24,40 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestCubeException ()
+		public void TestCubeMax ()
+		{
+			string temp = "3,402823E+39";
+			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Cube _cube = new Cube (float.Parse(temp));});
+		}
+		[Test ()]
+		public void TestCubeMin ()
+		{
+			string temp = "-3,402823E+39";
+			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Cube _cube = new Cube (float.Parse(temp));});
+		}
+
+		[Test ()]
+		public void TestCubeZero ()
 		{
 			Assert.Catch(Type.GetType("labs.FigureZeroSizeException"),()=>{Cube _cube = new Cube (0);});
 		}
 
 		[Test ()]
-		public void TestPyramidException ()
+		public void TestPyramidMax ()
+		{
+			string temp = "3,402823E+39";
+			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Pyramid _pyr = new Pyramid  (float.Parse(temp));});
+		}
+
+		[Test ()]
+		public void TestPyramidMin ()
+		{
+			string temp = "-3,402823E+39";
+			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Pyramid _pyr = new Pyramid  (float.Parse(temp));});
+		}
+
+		[Test ()]
+		public void TestPyramidZero ()
 		{
 			Assert.Catch(Type.GetType("labs.FigureZeroSizeException"),()=>{Pyramid _pyr = new Pyramid (0);});
 		}
