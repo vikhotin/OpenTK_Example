@@ -16,6 +16,13 @@ namespace labs
 		}
 
 		[Test ()]
+		public void TestCameraEqual ()
+		{
+			Assert.Catch (Type.GetType ("labs.EqualPosTrgException"),() => {Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (0, 0, 0));});
+		}
+
+
+		[Test ()]
 		public void TestMoveX ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));

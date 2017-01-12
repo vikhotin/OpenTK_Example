@@ -12,6 +12,8 @@ namespace labs
 
 		public Renderer(Scene s)
 		{
+			if (s == null)
+				throw new NullReferenceException ("Scene is null");
 			scene = s;
 		}
 
