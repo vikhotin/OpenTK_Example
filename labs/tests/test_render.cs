@@ -8,7 +8,7 @@ namespace labs
 	public class test_render 
 	{ 
 		[Test ()] 
-		public void TestRender () 
+		public void test_render_n () 
 		{ 
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1)); 
 			Cube _cube = new Cube (10); 
@@ -19,7 +19,7 @@ namespace labs
 		} 
 
 		[Test ()] 
-		public void TestRenderExc () 
+		public void test_render_exc () 
 		{ 
 			Scene _sc = null;
 			Assert.Catch (Type.GetType("System.NullReferenceException"), () => {

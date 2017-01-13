@@ -8,7 +8,7 @@ namespace labs
 	public class test_figure
 	{
 		[Test ()]
-		public void TestCube ()
+		public void test_cube ()
 		{
 			float width = 10;
 			Cube _cube = new Cube (width);
@@ -24,46 +24,46 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestCubeMax ()
+		public void test_cube_max ()
 		{
 			string temp = "3,402823E+39";
 			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Cube _cube = new Cube (float.Parse(temp));});
 		}
 		[Test ()]
-		public void TestCubeMin ()
+		public void test_cube_min ()
 		{
 			string temp = "-3,402823E+39";
 			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Cube _cube = new Cube (float.Parse(temp));});
 		}
 
 		[Test ()]
-		public void TestCubeZero ()
+		public void test_cube_zero ()
 		{
 			Assert.Catch(Type.GetType("labs.FigureZeroSizeException"),()=>{Cube _cube = new Cube (0);});
 		}
 
 		[Test ()]
-		public void TestPyramidMax ()
+		public void test_pyramid_max ()
 		{
 			string temp = "3,402823E+39";
 			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Pyramid _pyr = new Pyramid  (float.Parse(temp));});
 		}
 
 		[Test ()]
-		public void TestPyramidMin ()
+		public void test_pyramid_min ()
 		{
 			string temp = "-3,402823E+39";
 			Assert.Catch(Type.GetType("System.OverflowException"),()=>{Pyramid _pyr = new Pyramid  (float.Parse(temp));});
 		}
 
 		[Test ()]
-		public void TestPyramidZero ()
+		public void test_pyramid_zero ()
 		{
 			Assert.Catch(Type.GetType("labs.FigureZeroSizeException"),()=>{Pyramid _pyr = new Pyramid (0);});
 		}
 
 		[Test ()]
-		public void TestPyramid ()
+		public void test_pyramid ()
 		{
 			float width = 10;
 			Pyramid _pyr = new Pyramid (width);

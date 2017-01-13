@@ -8,7 +8,7 @@ namespace labs
 	public class test_scene
 	{
 		[Test ()]
-		public void TestScene ()
+		public void test_scene_n ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			Cube _cube = new Cube (10);
@@ -18,7 +18,7 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestSceneExc ()
+		public void test_scene_exc ()
 		{
 			Camera _cam = null;
 			Cube _cube = new Cube (10);
