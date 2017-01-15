@@ -21,6 +21,14 @@ namespace labs
 				new Vector3 (width, width, width),
 				new Vector3 (width, 0, width)
 			}, _cube.Vertices);
+
+			Assert.AreEqual (new int[6][]{
+				new int[4] { 0, 1, 2, 3 },
+				new int[4] { 0, 3, 7, 4 },
+				new int[4] { 4, 5, 6, 7 },
+				new int[4] { 1, 2, 6, 5 },
+				new int[4] { 0, 1, 5, 4 },
+				new int[4] { 2, 3, 7, 6 }}, _cube.Faces);
 		}
 
 		[Test ()]
