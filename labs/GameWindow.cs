@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics;
@@ -9,6 +10,8 @@ namespace labs
     public class Program : GameWindow
     {
 		private Renderer renderer;
+
+		int vertex_buffer_object, color_buffer_object, element_buffer_object;
 
         public Program(int _width, string _fig) : base(800, 600, new GraphicsMode(16, 16))
         {
@@ -43,12 +46,75 @@ namespace labs
 			GL.MatrixMode(MatrixMode.Projection);
 			GL.LoadMatrix(ref p);
 
+			CreateVBO();
+
+			using (StreamReader vs = new StreamReader("Simple_VS.glsl"))
+			using (StreamReader fs = new StreamReader("Simple_FS.glsl"))
+				renderer.CreateShaders(vs.ReadToEnd(), fs.ReadToEnd());
+
 			/*
 			Matrix4 modelview = Matrix4.LookAt(70, 70, 70, 0, 0, 0, 0, 1, 0);
 			GL.MatrixMode(MatrixMode.Modelview);
 			GL.LoadMatrix(ref modelview);
 			*/
         }
+
+		void CreateVBO()
+		{
+			int size;
+
+			GL.GenBuffers(1, out vertex_buffer_object);
+			GL.GenBuffers(1, out color_buffer_object);
+			GL.GenBuffers(1, out element_buffer_object);
+
+			renderer.vertex_buffer_object = vertex_buffer_object;
+			renderer.color_buffer_object = color_buffer_object;
+			renderer.element_buffer_object = element_buffer_object;
+
+			// Upload the vertex buffer.
+			GL.BindBuffer(BufferTarget.ArrayBuffer, vertex_buffer_object);
+			GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(renderer.scene.figures[0].Vertices.Length * 3 * sizeof(float)),
+			              renderer.scene.figures[0].Vertices, BufferUsageHint.StaticDraw);
+			GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize, out size);
+			if (size != renderer.scene.figures[0].Vertices.Length * 3 * sizeof(Single))
+				throw new ApplicationException(String.Format(
+					"Problem uploading vertex buffer to VBO (vertices). Tried to upload {0} bytes, uploaded {1}.",
+					renderer.scene.figures[0].Vertices.Length * 3 * sizeof(Single), size));
+
+			// Upload the color buffer.
+			GL.BindBuffer(BufferTarget.ArrayBuffer, color_buffer_object);
+			GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(renderer.scene.figures[0].Colors.Length * sizeof(int)), 
+			              renderer.scene.figures[0].Colors, BufferUsageHint.StaticDraw);
+			GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize, out size);
+			if (size != renderer.scene.figures[0].Colors.Length * sizeof(int))
+				throw new ApplicationException(String.Format(
+					"Problem uploading vertex buffer to VBO (colors). Tried to upload {0} bytes, uploaded {1}.",
+					renderer.scene.figures[0].Colors.Length * sizeof(int), size));
+
+			// Upload the index buffer (elements inside the vertex buffer, not color indices as per the IndexPointer function!)
+			GL.BindBuffer(BufferTarget.ElementArrayBuffer, element_buffer_object);
+			GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(renderer.scene.figures[0].Faces.Length * sizeof(Int32)), 
+			              renderer.scene.figures[0].Faces, BufferUsageHint.StaticDraw);
+			GL.GetBufferParameter(BufferTarget.ElementArrayBuffer, BufferParameterName.BufferSize, out size);
+			if (size != renderer.scene.figures[0].Faces.Length * sizeof(int))
+				throw new ApplicationException(String.Format(
+					"Problem uploading vertex buffer to VBO (offsets). Tried to upload {0} bytes, uploaded {1}.",
+					renderer.scene.figures[0].Faces.Length * sizeof(int), size));
+		}
+
+		protected override void OnUnload(EventArgs e)
+		{
+			if (vertex_buffer_object != 0)
+				GL.DeleteBuffers(1, ref vertex_buffer_object);
+			if (element_buffer_object != 0)
+				GL.DeleteBuffers(1, ref element_buffer_object);
+			if (renderer.shader_program != 0)
+				GL.DeleteProgram(renderer.shader_program);
+			if (renderer.fragment_shader_object != 0)
+				GL.DeleteShader(renderer.fragment_shader_object);
+			if (renderer.vertex_shader_object != 0)
+				GL.DeleteShader(renderer.vertex_shader_object);
+		}
 
         protected override void OnResize(EventArgs e)
         {
