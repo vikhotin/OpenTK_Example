@@ -8,7 +8,7 @@ namespace labs
 	public class test_camera
 	{
 		[Test ()]
-		public void TestCamera ()
+		public void test_camera_n ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			Assert.AreEqual (new Vector3 (0, 0, 0), _cam.Pos);
@@ -16,7 +16,14 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestMoveX ()
+		public void test_camera_equal ()
+		{
+			Assert.Catch (Type.GetType ("labs.EqualPosTrgException"),() => {Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (0, 0, 0));});
+		}
+
+
+		[Test ()]
+		public void test_move_xn ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			ShiftDirection dir = ShiftDirection.XAxis;
@@ -26,7 +33,7 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestMoveY ()
+		public void test_move_yn ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			ShiftDirection dir = ShiftDirection.YAxis;
@@ -36,7 +43,7 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestMoveZ ()
+		public void test_move_zn ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			ShiftDirection dir = ShiftDirection.ZAxis;
@@ -46,7 +53,7 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestMove_X ()
+		public void test_move_x ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			ShiftDirection dir = ShiftDirection.XAxis;
@@ -56,7 +63,7 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestMove_Y ()
+		public void test_move_y ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			ShiftDirection dir = ShiftDirection.YAxis;
@@ -66,7 +73,7 @@ namespace labs
 		}
 
 		[Test ()]
-		public void TestMove_Z ()
+		public void test_move_z ()
 		{
 			Camera _cam = new Camera (new Vector3 (0, 0, 0), new Vector3 (1, 1, 1));
 			ShiftDirection dir = ShiftDirection.ZAxis;
